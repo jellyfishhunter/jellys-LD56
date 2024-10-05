@@ -9,6 +9,7 @@ var direction := Vector2()
 var is_attacking = false
 var is_knocked_back = false
 var is_entering_stage = false
+var is_defeated = false
 var has_rna = true
 
 func _ready():
@@ -19,6 +20,9 @@ func _process(_delta):
 	if !is_knocked_back:
 		velocity = Vector2()
 	
+	if is_defeated:
+		return
+
 	if is_entering_stage:
 		velocity = Vector2(1, 0) * speed
 	elif !is_attacking and !is_knocked_back:
@@ -63,9 +67,13 @@ func update_animation():
 func hit(spike: Node2D):
 	if has_rna:
 		call_deferred("lose_rna")
+	elif is_knocked_back or is_defeated:
+		# you are invincible while knocked back
+		return
 	else:
+		is_defeated = true
+		$AnimatedSprite2D.play("death")
 		defeated.emit()
-		# TODO death animation and game over
 	
 	# knockback from source
 	var knockback = (global_position - spike.global_position).normalized() * 100

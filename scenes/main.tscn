@@ -6,6 +6,7 @@
 
 [node name="Main" type="Node"]
 script = ExtResource("1_877hd")
+environment_scene = ExtResource("2_47xkn")
 
 [node name="Background" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -14,8 +15,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0312, 0.03608, 0.08, 1)
-
-[node name="Environment" parent="." instance=ExtResource("2_47xkn")]
 
 [node name="HUD" parent="." instance=ExtResource("2_hvbp0")]
 

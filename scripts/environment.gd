@@ -1,14 +1,20 @@
 extends Node2D
 
+signal player_lost_rna
+signal player_defeated
+
 @export var rna_scene: PackedScene
 @export var stage_scenes: Array = [PackedScene]
 @export var boss_stage_scene: PackedScene
 
 var current_stage: TileMapLayer
 var rna: Area2D
+var game_is_over = false
+
+func _ready() -> void:
+	create_stage()
 
 func start_game() -> void:
-	create_stage()
 	enter_stage()
 
 func create_stage() -> void:
@@ -49,3 +55,8 @@ func _on_player_lost_rna() -> void:
 	rna = rna_scene.instantiate()
 	rna.position = $Player.position
 	add_child(rna)
+	player_lost_rna.emit()
+
+func _on_player_defeated() -> void:
+	player_defeated.emit()
+	game_is_over = true

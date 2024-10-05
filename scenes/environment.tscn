@@ -34,6 +34,7 @@ shape = SubResource("RectangleShape2D_wsj7l")
 [node name="EntryPoint" type="Marker2D" parent="."]
 position = Vector2(-16, 160)
 
+[connection signal="defeated" from="Player" to="." method="_on_player_defeated"]
 [connection signal="lost_rna" from="Player" to="." method="_on_player_lost_rna"]
 [connection signal="body_entered" from="ExitArea" to="." method="_on_exit_area_body_entered"]
 [connection signal="body_entered" from="EntryArea" to="." method="_on_entry_area_body_entered"]
