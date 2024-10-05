@@ -1,17 +1,23 @@
-extends Node2D
-signal hit
+extends CharacterBody2D
+signal lost_rna
+signal defeated
 
 @export var speed = 100
 var screen_size
 var direction := Vector2()
-var isAttacking = false
+var is_attacking = false
+var is_knocked_back = false
+var has_rna = true
 
 func _ready():
 	screen_size = get_viewport_rect().size
 	$AnimatedSprite2D.play("idle_default")
 
-func _process(delta):
-	if !isAttacking:
+func _process(_delta):
+	if !is_knocked_back:
+		velocity = Vector2()
+		
+	if !is_attacking:
 		direction = Vector2()
 		if Input.is_action_pressed("move_right"):
 			direction.x += 1
@@ -23,21 +29,22 @@ func _process(delta):
 			direction.y -= 1
 
 		if direction.length() > 0:
-			direction = direction.normalized() * speed
+			direction = direction.normalized()
 			$SpikeHolder.rotation = direction.angle()
-			position += direction * delta
-			position = position.clamp(Vector2.ZERO, screen_size)
-	elif $SpikeHolder/PlayerSpike.isPrepared:
-		isAttacking = false
+			velocity = direction * speed
+	
+	elif $SpikeHolder/PlayerSpike.is_prepared:
+		is_attacking = false
 
-	if Input.is_action_just_pressed("attack") and $SpikeHolder/PlayerSpike.isPrepared:
+	if has_rna and Input.is_action_just_pressed("attack") and $SpikeHolder/PlayerSpike.is_prepared:
 		$SpikeHolder/PlayerSpike.stab()
-		isAttacking = true
+		is_attacking = true
 
+	move_and_slide()
 	update_animation()
 
 func update_animation():
-	if isAttacking:
+	if is_attacking or is_knocked_back:
 		$AnimatedSprite2D.play("attack")
 	elif direction.x != 0:
 		$AnimatedSprite2D.play("walk_right")
@@ -49,3 +56,18 @@ func update_animation():
 		$AnimatedSprite2D.play("walk_down")
 	else:
 		$AnimatedSprite2D.play("idle_default")
+
+func hit(spike: Node2D):
+	if has_rna:
+		has_rna = false
+		lost_rna.emit()
+	else:
+		defeated.emit()
+		# TODO death animation and game over
+	
+	# knockback from source
+	var knockback = (global_position - spike.global_position).normalized() * 100
+	velocity += knockback
+	is_knocked_back = true
+	await get_tree().create_timer(0.5).timeout
+	is_knocked_back = false

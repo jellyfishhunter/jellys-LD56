@@ -94,7 +94,9 @@ radius = 100.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_qlhcn"]
 radius = 16.0
 
-[node name="Influenza" type="Node2D" groups=["Enemies"]]
+[node name="Influenza" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_46684")
 metadata/_edit_group_ = true
 
@@ -102,10 +104,7 @@ metadata/_edit_group_ = true
 sprite_frames = SubResource("SpriteFrames_2re0x")
 animation = &"attack"
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-gravity_scale = 0.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8fbc7")
 
 [node name="SpikeHolder" type="Node2D" parent="."]
@@ -116,7 +115,6 @@ position = Vector2(-12, -0.5)
 [node name="InfluenzaSpike2" parent="SpikeHolder" instance=ExtResource("12_exo84")]
 position = Vector2(-8.13173, -8.83883)
 rotation = 0.785398
-scale = Vector2(1, 1)
 
 [node name="InfluenzaSpike3" parent="SpikeHolder" instance=ExtResource("12_exo84")]
 position = Vector2(0.500001, -12)
@@ -125,7 +123,6 @@ rotation = 1.5708
 [node name="InfluenzaSpike4" parent="SpikeHolder" instance=ExtResource("12_exo84")]
 position = Vector2(8.83883, -8.13173)
 rotation = 2.35619
-scale = Vector2(1, 1)
 
 [node name="InfluenzaSpike5" parent="SpikeHolder" instance=ExtResource("12_exo84")]
 position = Vector2(12, 0.500001)
@@ -154,7 +151,6 @@ shape = SubResource("CircleShape2D_s6gdc")
 shape = SubResource("CircleShape2D_qlhcn")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
-[connection signal="body_entered" from="RigidBody2D" to="." method="_on_rigid_body_2d_body_entered"]
 [connection signal="body_entered" from="AlertArea" to="." method="_on_alert_area_body_entered"]
 [connection signal="body_exited" from="AlertArea" to="." method="_on_alert_area_body_exited"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]

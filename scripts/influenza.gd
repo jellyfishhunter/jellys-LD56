@@ -1,8 +1,9 @@
-extends Node2D
+extends CharacterBody2D
 
 @export var speed = 50
 var screen_size
 var player_node: Node2D
+var is_knocked_back = false
 
 enum State {IDLE, WALK, ATTACK, DEAD}
 var state := State.IDLE
@@ -18,11 +19,14 @@ func _ready():
 func add_player(player: Node2D):
 	player_node = player
 
-func _process(delta):
+func _process(_delta):
+	if !is_knocked_back:
+		velocity = Vector2()
+
 	if state == State.WALK:
 		# Move towards the player
 		var direction = (player_node.global_position - global_position).normalized()
-		position += direction * speed * delta
+		velocity = direction * speed
 
 		if direction.x > 0.5:
 			$AnimatedSprite2D.play("walk_right")
@@ -34,6 +38,8 @@ func _process(delta):
 			$AnimatedSprite2D.play("walk_down")
 		else:
 			$AnimatedSprite2D.play("idle")
+	
+	move_and_slide()
 
 func attack():
 	state = State.ATTACK
@@ -43,28 +49,37 @@ func attack():
 		if spike.is_prepared:
 			spike.stab()
 
+func hit(spike: Node2D):
+	if state == State.DEAD:
+		return
+	state = State.DEAD
+	$AnimatedSprite2D.play("death")
+
+	# knockback from source
+	var knockback = (global_position - spike.global_position).normalized() * 100
+	velocity += knockback
+	is_knocked_back = true
+	await get_tree().create_timer(0.5).timeout
+	is_knocked_back = false
+
 func _on_alert_area_body_entered(body: Node2D) -> void:
-	if body.name == "PlayerBody":
+	if body.name == "Player":
 		player_detection = PlayerDetection.INALERTAREA
 		if state == State.IDLE:
 			state = State.WALK
 
 func _on_alert_area_body_exited(body: Node2D) -> void:
-	if body.name == "PlayerBody":
+	if body.name == "Player":
 		player_detection = PlayerDetection.OUTOFREACH
 
 func _on_attack_area_body_entered(body: Node2D) -> void:
-	if body.name == "PlayerBody":
+	if body.name == "Player":
 		player_detection = PlayerDetection.INATTACKAREA
 		attack()
 
 func _on_attack_area_body_exited(body: Node2D) -> void:
-	if body.name == "PlayerBody":
+	if body.name == "Player":
 		player_detection = PlayerDetection.INALERTAREA
-
-func _on_rigid_body_2d_body_entered(body: Node) -> void:
-	# TODO if hit by player spike, change state to DEAD and play death animation
-	pass # Replace with function body.
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if state == State.ATTACK:

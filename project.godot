@@ -27,7 +27,8 @@ project/assembly_name="jellys-LD56"
 
 [global_group]
 
-Enemies=""
+Player=""
+Enemy=""
 
 [input]
 
