@@ -1,0 +1,161 @@
+[gd_scene load_steps=18 format=3 uid="uid://c0nmu0b1l1r4f"]
+
+[ext_resource type="Script" path="res://scripts/influenza.gd" id="1_46684"]
+[ext_resource type="Texture2D" uid="uid://3bord6slwpse" path="res://textures/influenza/attack_1.png" id="1_f7qv4"]
+[ext_resource type="Texture2D" uid="uid://nglwoar3o5ud" path="res://textures/influenza/attack_2.png" id="2_2yn61"]
+[ext_resource type="Texture2D" uid="uid://ox2xxiklpyok" path="res://textures/influenza/death_1.png" id="3_ugq23"]
+[ext_resource type="Texture2D" uid="uid://bc4h568xghei4" path="res://textures/influenza/death_2.png" id="4_ros2x"]
+[ext_resource type="Texture2D" uid="uid://cas0hv8extvh6" path="res://textures/influenza/death_3.png" id="5_7ulo4"]
+[ext_resource type="Texture2D" uid="uid://w30q5jwv1f0p" path="res://textures/influenza/idle_1.png" id="6_n18il"]
+[ext_resource type="Texture2D" uid="uid://05efi5xgjk2f" path="res://textures/influenza/idle_2.png" id="7_rqpx0"]
+[ext_resource type="Texture2D" uid="uid://d3ax8n1t3m7w4" path="res://textures/influenza/down.png" id="8_mayr0"]
+[ext_resource type="Texture2D" uid="uid://d0ae4igffumd8" path="res://textures/influenza/left.png" id="9_akake"]
+[ext_resource type="Texture2D" uid="uid://cs1owbtmyblu3" path="res://textures/influenza/right.png" id="10_duvys"]
+[ext_resource type="Texture2D" uid="uid://cyc1iprwqwvye" path="res://textures/influenza/up.png" id="11_v3cuj"]
+[ext_resource type="PackedScene" uid="uid://wfg56wk4h2vt" path="res://scenes/influenza_spike.tscn" id="12_exo84"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2re0x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_f7qv4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_2yn61")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ugq23")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ros2x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7ulo4")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_n18il")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rqpx0")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_mayr0")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_akake")
+}],
+"loop": true,
+"name": &"walk_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_duvys")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_v3cuj")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8fbc7"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s6gdc"]
+radius = 100.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qlhcn"]
+radius = 16.0
+
+[node name="Influenza" type="Node2D" groups=["Enemies"]]
+script = ExtResource("1_46684")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2re0x")
+animation = &"attack"
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_8fbc7")
+
+[node name="SpikeHolder" type="Node2D" parent="."]
+
+[node name="InfluenzaSpike1" parent="SpikeHolder" instance=ExtResource("12_exo84")]
+position = Vector2(-12, -0.5)
+
+[node name="InfluenzaSpike2" parent="SpikeHolder" instance=ExtResource("12_exo84")]
+position = Vector2(-8.13173, -8.83883)
+rotation = 0.785398
+scale = Vector2(1, 1)
+
+[node name="InfluenzaSpike3" parent="SpikeHolder" instance=ExtResource("12_exo84")]
+position = Vector2(0.500001, -12)
+rotation = 1.5708
+
+[node name="InfluenzaSpike4" parent="SpikeHolder" instance=ExtResource("12_exo84")]
+position = Vector2(8.83883, -8.13173)
+rotation = 2.35619
+scale = Vector2(1, 1)
+
+[node name="InfluenzaSpike5" parent="SpikeHolder" instance=ExtResource("12_exo84")]
+position = Vector2(12, 0.500001)
+rotation = -3.14159
+
+[node name="InfluenzaSpike6" parent="SpikeHolder" instance=ExtResource("12_exo84")]
+position = Vector2(8.13173, 8.83883)
+rotation = -2.35619
+
+[node name="InfluenzaSpike7" parent="SpikeHolder" instance=ExtResource("12_exo84")]
+position = Vector2(-0.5, 12)
+rotation = -1.5708
+
+[node name="InfluenzaSpike8" parent="SpikeHolder" instance=ExtResource("12_exo84")]
+position = Vector2(-8.83883, 8.13173)
+rotation = -0.785398
+
+[node name="AlertArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AlertArea"]
+shape = SubResource("CircleShape2D_s6gdc")
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_qlhcn")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="RigidBody2D" to="." method="_on_rigid_body_2d_body_entered"]
+[connection signal="body_entered" from="AlertArea" to="." method="_on_alert_area_body_entered"]
+[connection signal="body_exited" from="AlertArea" to="." method="_on_alert_area_body_exited"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_attack_area_body_exited"]
