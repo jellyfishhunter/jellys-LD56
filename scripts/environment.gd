@@ -7,7 +7,7 @@ extends Node2D
 var current_stage: TileMapLayer
 var rna: Area2D
 
-func _ready() -> void:
+func start_game() -> void:
 	create_stage()
 	enter_stage()
 

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://by2ux8o8m6be5"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_877hd"]
+[ext_resource type="PackedScene" uid="uid://q787360p5qg8" path="res://scenes/environment.tscn" id="2_47xkn"]
+[ext_resource type="PackedScene" uid="uid://c0gqv827j5ugy" path="res://scenes/hud.tscn" id="2_hvbp0"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_877hd")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0312, 0.03608, 0.08, 1)
+
+[node name="Environment" parent="." instance=ExtResource("2_47xkn")]
+
+[node name="HUD" parent="." instance=ExtResource("2_hvbp0")]
+
+[connection signal="start_game" from="HUD" to="." method="_on_hud_start_game"]
