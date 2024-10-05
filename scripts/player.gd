@@ -8,6 +8,7 @@ var screen_size
 var direction := Vector2()
 var is_attacking = false
 var is_knocked_back = false
+var is_entering_stage = false
 var has_rna = true
 
 func _ready():
@@ -17,8 +18,10 @@ func _ready():
 func _process(_delta):
 	if !is_knocked_back:
 		velocity = Vector2()
-		
-	if !is_attacking:
+	
+	if is_entering_stage:
+		velocity = Vector2(1, 0) * speed
+	elif !is_attacking and !is_knocked_back:
 		direction = Vector2()
 		if Input.is_action_pressed("move_right"):
 			direction.x += 1
@@ -33,7 +36,6 @@ func _process(_delta):
 			direction = direction.normalized()
 			$SpikeHolder.rotation = direction.angle()
 			velocity = direction * speed
-	
 	elif $SpikeHolder/PlayerSpike.is_prepared:
 		is_attacking = false
 

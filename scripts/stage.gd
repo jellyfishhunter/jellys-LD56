@@ -18,7 +18,7 @@ func _ready() -> void:
 		enemy.position = spawn_point.position
 		enemy.add_player(player)
 		enemy.connect("defeated", _on_enemy_defeated)
-		add_child(enemy)
+		call_deferred("add_child", enemy)
 
 func open_gates() -> void:
 	$GateLayer.enabled = false
@@ -27,7 +27,7 @@ func close_gates() -> void:
 	$GateLayer.enabled = true
 
 func block_rear() -> void:
-	$RearBlockLayer.enabled = true
+	$RearBlocker.enabled = true
 
 func _on_enemy_defeated() -> void:
 	enemy_count -= 1

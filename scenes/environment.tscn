@@ -1,16 +1,39 @@
-[gd_scene load_steps=5 format=3 uid="uid://q787360p5qg8"]
+[gd_scene load_steps=7 format=3 uid="uid://q787360p5qg8"]
 
 [ext_resource type="Script" path="res://scripts/environment.gd" id="1_06v0s"]
 [ext_resource type="PackedScene" uid="uid://c7fvk1stv7dxb" path="res://scenes/player.tscn" id="1_y2l1j"]
 [ext_resource type="PackedScene" uid="uid://dshghmwviwkoj" path="res://scenes/rna.tscn" id="2_odetr"]
 [ext_resource type="PackedScene" uid="uid://cd7mlmk805l7p" path="res://scenes/stage.tscn" id="3_45uwi"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w64ww"]
+size = Vector2(100, 320)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wsj7l"]
+size = Vector2(100, 320)
+
 [node name="Environment" type="Node2D"]
 script = ExtResource("1_06v0s")
 rna_scene = ExtResource("2_odetr")
-stage_scene = ExtResource("3_45uwi")
+stage_scenes = [ExtResource("3_45uwi")]
 
 [node name="Player" parent="." instance=ExtResource("1_y2l1j")]
-position = Vector2(39, 100)
+position = Vector2(-16, 160)
+
+[node name="ExitArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea"]
+position = Vector2(530, 160)
+shape = SubResource("RectangleShape2D_w64ww")
+
+[node name="EntryArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntryArea"]
+position = Vector2(66, 160)
+shape = SubResource("RectangleShape2D_wsj7l")
+
+[node name="EntryPoint" type="Marker2D" parent="."]
+position = Vector2(-16, 160)
 
 [connection signal="lost_rna" from="Player" to="." method="_on_player_lost_rna"]
+[connection signal="body_entered" from="ExitArea" to="." method="_on_exit_area_body_entered"]
+[connection signal="body_entered" from="EntryArea" to="." method="_on_entry_area_body_entered"]
