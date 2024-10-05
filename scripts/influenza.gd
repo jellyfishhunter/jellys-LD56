@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal defeated
+
 @export var speed = 50
 var screen_size
 var player_node: Node2D
@@ -91,4 +93,5 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 			state = State.IDLE
 			$AnimatedSprite2D.play("idle")
 	elif state == State.DEAD:
+		defeated.emit()
 		queue_free()

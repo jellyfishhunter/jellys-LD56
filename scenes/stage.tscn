@@ -1,11 +1,130 @@
-[gd_scene load_steps=2 format=4 uid="uid://cd7mlmk805l7p"]
+[gd_scene load_steps=4 format=4 uid="uid://cd7mlmk805l7p"]
 
 [ext_resource type="TileSet" uid="uid://c3ivhdhf57f2f" path="res://scenes/stage.tres" id="1_bd2e1"]
+[ext_resource type="Script" path="res://scripts/stage.gd" id="2_ighot"]
+[ext_resource type="PackedScene" uid="uid://c0nmu0b1l1r4f" path="res://scenes/influenza.tscn" id="3_qodf6"]
 
 [node name="Stage" type="TileMapLayer"]
 tile_map_data = PackedByteArray("AAAAAAEAAAADAAIAAAAAAAIAAAADAAIAAAAAAAMAAAADAAIAAAAAAAQAAAADAAIAAAAAAAUAAAADAAIAAAAAAAYAAAADAAIAAAAAAAcAAAADAAIAAAAAAAgAAAADAAIAAAAAAAkAAAADAAIAAAAAAAoAAAADAAIAAAAAAAsAAAADAAIAAAAAAAwAAAADAAIAAAAAAA0AAAADAAIAAAAAAA4AAAADAAIAAAAAAA8AAAADAAIAAAAAAAAAAAACAAIAAAABAAAAAAACAAMAAAACAAAAAAACAAMAAAADAAAAAAACAAMAAAAEAAAAAAACAAMAAAAFAAAAAAACAAMAAAAGAAAAAAACAAMAAAAHAAAAAAACAAMAAAAIAAAAAAACAAMAAAAJAAAAAAACAAMAAAAKAAAAAAACAAMAAAALAAAAAAACAAMAAAAMAAAAAAACAAMAAAANAAAAAAACAAMAAAAOAAAAAAACAAMAAAAPAAAAAAACAAMAAAAQAAAAAAACAAMAAAARAAAAAAACAAMAAAASAAAAAAACAAMAAAATAAAAAAACAAMAAAAUAAAAAAACAAMAAAAVAAAAAAACAAMAAAAWAAAAAAACAAMAAAAXAAAAAAACAAMAAAAYAAAAAAACAAMAAAAZAAAAAAACAAMAAAAaAAAAAAACAAMAAAAbAAAAAAACAAMAAAAcAAAAAAACAAMAAAAdAAAAAAACAAMAAAAeAAAAAAACAAMAAAAfAAAAAAACAAMAAAAgAAAAAAACAAMAAAAhAAAAAAACAAMAAAAiAAAAAAACAAMAAAAjAAAAAAACAAMAAAAkAAAAAAACAAMAAAAlAAAAAAACAAMAAAAmAAAAAAACAAMAAAAnAAAAAAACAAMAAAAoAAAAAAACAAMAAAApAAAAAAACAAMAAAAqAAAAAAACAAMAAAArAAAAAAACAAMAAAAsAAAAAAACAAMAAAAtAAAAAAACAAMAAAAuAAAAAAACAAMAAAAvAAAAAAACAAMAAAAwAAAAAAACAAMAAAAxAAAAAAACAAMAAAAyAAAAAAACAAMAAAAzAAAAAAACAAMAAAA0AAAAAAACAAMAAAA1AAAAAAACAAMAAAA2AAAAAAACAAMAAAA3AAAAAAACAAMAAAA4AAAAAAACAAMAAAA5AAAAAAACAAMAAAA6AAAAAAACAAMAAAABACcAAAACAAEAAAACACcAAAACAAEAAAADACcAAAACAAEAAAAEACcAAAACAAEAAAAFACcAAAACAAEAAAAGACcAAAACAAEAAAAHACcAAAACAAEAAAAIACcAAAACAAEAAAAJACcAAAACAAEAAAAKACcAAAACAAEAAAALACcAAAACAAEAAAAMACcAAAACAAEAAAANACcAAAACAAEAAAAOACcAAAACAAEAAAAPACcAAAACAAEAAAAQACcAAAACAAEAAAARACcAAAACAAEAAAASACcAAAACAAEAAAATACcAAAACAAEAAAAUACcAAAACAAEAAAAVACcAAAACAAEAAAAWACcAAAACAAEAAAAXACcAAAACAAEAAAAYACcAAAACAAEAAAAZACcAAAACAAEAAAAaACcAAAACAAEAAAAbACcAAAACAAEAAAAcACcAAAACAAEAAAAdACcAAAACAAEAAAAeACcAAAACAAEAAAAfACcAAAACAAEAAAAgACcAAAACAAEAAAAhACcAAAACAAEAAAAiACcAAAACAAEAAAAjACcAAAACAAEAAAAkACcAAAACAAEAAAAlACcAAAACAAEAAAAmACcAAAACAAEAAAAnACcAAAACAAEAAAAoACcAAAACAAEAAAApACcAAAACAAEAAAAqACcAAAACAAEAAAArACcAAAACAAEAAAAsACcAAAACAAEAAAAtACcAAAACAAEAAAAuACcAAAACAAEAAAAvACcAAAACAAEAAAAwACcAAAACAAEAAAAxACcAAAACAAEAAAAyACcAAAACAAEAAAAzACcAAAACAAEAAAA0ACcAAAACAAEAAAA1ACcAAAACAAEAAAA2ACcAAAACAAEAAAA3ACcAAAACAAEAAAA4ACcAAAACAAEAAAA5ACcAAAACAAEAAAA6ACcAAAACAAEAAAA7AAEAAAABAAIAAAA7AAIAAAABAAIAAAA7AAMAAAABAAIAAAA7AAQAAAABAAIAAAA7AAUAAAABAAIAAAA7AAYAAAABAAIAAAA7AAcAAAABAAIAAAA7AAgAAAABAAIAAAA7AAkAAAABAAIAAAA7AAoAAAABAAIAAAA7AAsAAAABAAIAAAA7AAwAAAABAAIAAAA7AA0AAAABAAIAAAA7AA4AAAABAAIAAAA7AA8AAAABAAIAAAA7ABgAAAABAAIAAAA7ABkAAAABAAIAAAA7ABoAAAABAAIAAAA7ABsAAAABAAIAAAA7ABwAAAABAAIAAAA7AB0AAAABAAIAAAA7AB4AAAABAAIAAAA7AB8AAAABAAIAAAA7ACAAAAABAAIAAAA7ACEAAAABAAIAAAA7ACIAAAABAAIAAAA7ACMAAAABAAIAAAA7ACQAAAABAAIAAAA7ACUAAAABAAIAAAA7ACYAAAABAAIAAAA7ACcAAAACAAIAAAA7AAAAAAACAAIAAAAAACcAAAACAAIAAAAAABgAAAADAAIAAAAAABkAAAADAAIAAAAAABoAAAADAAIAAAAAABsAAAADAAIAAAAAABwAAAADAAIAAAAAAB0AAAADAAIAAAAAAB4AAAADAAIAAAAAAB8AAAADAAIAAAAAACAAAAADAAIAAAAAACEAAAADAAIAAAAAACIAAAADAAIAAAAAACMAAAADAAIAAAAAACQAAAADAAIAAAAAACUAAAADAAIAAAAAACYAAAADAAIAAAA=")
 tile_set = ExtResource("1_bd2e1")
+script = ExtResource("2_ighot")
+influenza_scene = ExtResource("3_qodf6")
 
 [node name="GateLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAAABAAAAAEAAEAAAAAABEAAAAEAAIAAAAAABIAAAAEAAIAAAAAABMAAAAEAAIAAAAAABQAAAAEAAIAAAAAABUAAAAEAAIAAAAAABYAAAAEAAIAAAAAABcAAAAEAAMAAAA7ABAAAAAEAAEAAAA7ABEAAAAEAAIAAAA7ABIAAAAEAAIAAAA7ABMAAAAEAAIAAAA7ABQAAAAEAAIAAAA7ABUAAAAEAAIAAAA7ABYAAAAEAAIAAAA7ABcAAAAEAAMAAAA=")
 tile_set = ExtResource("1_bd2e1")
+
+[node name="RearBlocker" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD//xAAAAAEAAEAAAD//xEAAAAEAAIAAAD//xIAAAAEAAIAAAD//xMAAAAEAAIAAAD//xQAAAAEAAIAAAD//xUAAAAEAAIAAAD//xYAAAAEAAIAAAD//xcAAAAEAAMAAAA=")
+enabled = false
+tile_set = ExtResource("1_bd2e1")
+
+[node name="EnemySpawnPositions" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(45, 42)
+
+[node name="Marker2D2" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(64, 42)
+
+[node name="Marker2D3" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(56, 57)
+
+[node name="Marker2D4" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(43, 263)
+
+[node name="Marker2D5" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(62, 263)
+
+[node name="Marker2D6" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(56, 247)
+
+[node name="Marker2D7" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(175, 46)
+
+[node name="Marker2D8" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(194, 46)
+
+[node name="Marker2D9" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(186, 61)
+
+[node name="Marker2D10" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(173, 267)
+
+[node name="Marker2D11" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(192, 267)
+
+[node name="Marker2D12" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(186, 251)
+
+[node name="Marker2D13" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(299, 45)
+
+[node name="Marker2D14" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(318, 45)
+
+[node name="Marker2D15" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(310, 60)
+
+[node name="Marker2D16" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(297, 266)
+
+[node name="Marker2D17" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(316, 266)
+
+[node name="Marker2D18" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(310, 250)
+
+[node name="Marker2D19" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(412, 46)
+
+[node name="Marker2D20" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(431, 46)
+
+[node name="Marker2D21" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(423, 61)
+
+[node name="Marker2D22" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(410, 267)
+
+[node name="Marker2D23" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(429, 267)
+
+[node name="Marker2D24" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(423, 251)
+
+[node name="Marker2D25" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(396, 147)
+
+[node name="Marker2D28" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(409, 168)
+
+[node name="Marker2D26" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(412, 147)
+
+[node name="Marker2D29" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(429, 140)
+
+[node name="Marker2D30" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(429, 158)
+
+[node name="Marker2D27" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(409, 131)
+
+[node name="Marker2D31" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(238, 147)
+
+[node name="Marker2D32" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(251, 168)
+
+[node name="Marker2D33" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(254, 147)
+
+[node name="Marker2D34" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(271, 140)
+
+[node name="Marker2D35" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(271, 158)
+
+[node name="Marker2D36" type="Marker2D" parent="EnemySpawnPositions"]
+position = Vector2(251, 131)

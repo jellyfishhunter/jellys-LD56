@@ -1,29 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://q787360p5qg8"]
+[gd_scene load_steps=5 format=3 uid="uid://q787360p5qg8"]
 
 [ext_resource type="Script" path="res://scripts/environment.gd" id="1_06v0s"]
 [ext_resource type="PackedScene" uid="uid://c7fvk1stv7dxb" path="res://scenes/player.tscn" id="1_y2l1j"]
 [ext_resource type="PackedScene" uid="uid://dshghmwviwkoj" path="res://scenes/rna.tscn" id="2_odetr"]
-[ext_resource type="PackedScene" uid="uid://c0nmu0b1l1r4f" path="res://scenes/influenza.tscn" id="2_uhe0q"]
-[ext_resource type="PackedScene" uid="uid://cd7mlmk805l7p" path="res://scenes/stage.tscn" id="5_jjwor"]
+[ext_resource type="PackedScene" uid="uid://cd7mlmk805l7p" path="res://scenes/stage.tscn" id="3_45uwi"]
 
 [node name="Environment" type="Node2D"]
 script = ExtResource("1_06v0s")
 rna_scene = ExtResource("2_odetr")
+stage_scene = ExtResource("3_45uwi")
 
 [node name="Player" parent="." instance=ExtResource("1_y2l1j")]
 position = Vector2(39, 100)
-
-[node name="Enemies" type="Node2D" parent="."]
-
-[node name="Influenza" parent="Enemies" instance=ExtResource("2_uhe0q")]
-position = Vector2(372, 100)
-
-[node name="Influenza2" parent="Enemies" instance=ExtResource("2_uhe0q")]
-position = Vector2(315, 226)
-
-[node name="Influenza3" parent="Enemies" instance=ExtResource("2_uhe0q")]
-position = Vector2(388, 172)
-
-[node name="Stage" parent="." instance=ExtResource("5_jjwor")]
 
 [connection signal="lost_rna" from="Player" to="." method="_on_player_lost_rna"]

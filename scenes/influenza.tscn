@@ -141,11 +141,13 @@ position = Vector2(-8.83883, 8.13173)
 rotation = -0.785398
 
 [node name="AlertArea" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AlertArea"]
 shape = SubResource("CircleShape2D_s6gdc")
 
 [node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 shape = SubResource("CircleShape2D_qlhcn")
