@@ -1,5 +1,6 @@
 extends CharacterBody2D
 signal lost_rna
+signal gained_rna
 signal defeated
 
 @export var speed = 100
@@ -59,8 +60,7 @@ func update_animation():
 
 func hit(spike: Node2D):
 	if has_rna:
-		has_rna = false
-		lost_rna.emit()
+		call_deferred("lose_rna")
 	else:
 		defeated.emit()
 		# TODO death animation and game over
@@ -71,3 +71,12 @@ func hit(spike: Node2D):
 	is_knocked_back = true
 	await get_tree().create_timer(0.5).timeout
 	is_knocked_back = false
+
+func lose_rna():
+	if has_rna:
+		has_rna = false
+		lost_rna.emit()
+
+func collect_rna():
+	has_rna = true
+	gained_rna.emit()
