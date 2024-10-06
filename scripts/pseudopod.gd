@@ -3,6 +3,7 @@ extends Node2D
 func _ready() -> void:
 	$Area2D.monitoring = false
 	$AnimatedSprite2D.play("slap")
+	$AttackParticleBurster.burst()
 	await get_tree().create_timer(.15).timeout
 	$Area2D.monitoring = true
 

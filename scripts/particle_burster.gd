@@ -5,7 +5,6 @@ extends Node2D
 
 func burst() -> void:
 	var particle_burst = particle_burst_scene.instantiate()
-	particle_burst.global_position = position
 	particle_burst.process_material.color = color
 	add_child(particle_burst)
 	particle_burst.emitting = true

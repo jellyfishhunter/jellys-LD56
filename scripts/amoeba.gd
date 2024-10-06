@@ -46,6 +46,8 @@ func attack():
 	pseudopod_attack(direction)
 	pseudopod_attack(direction.rotated(PI / 8))
 	pseudopod_attack(direction.rotated(-PI / 8))
+	$AttackParticleBurster1.burst()
+	$AttackParticleBurster2.burst()
 
 	await get_tree().create_timer(1.0).timeout
 	if state == State.ATTACK:
@@ -92,8 +94,17 @@ func die():
 		return
 	state = State.DEAD
 	$AnimatedSprite2D.play("death")
+	$DeathParticleBurster1.burst()
+	$DeathParticleBurster2.burst()
+	$DeathParticleBurster3.burst()
 	await get_tree().create_timer(1.0).timeout
 	$Offspring.show()
+	$DeathParticleBurster1.burst()
+	$DeathParticleBurster2.burst()
+	$DeathParticleBurster3.burst()
 	await get_tree().create_timer(.8).timeout
+	$DeathParticleBurster1.burst()
+	$DeathParticleBurster2.burst()
+	$DeathParticleBurster3.burst()
 	$AnimatedSprite2D.hide()
 	defeated.emit()
