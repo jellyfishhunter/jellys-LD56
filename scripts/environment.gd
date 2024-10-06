@@ -65,12 +65,15 @@ func _on_exit_area_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		played_stages += 1
 		current_stage.queue_free()
-		create_stage()
-		enter_stage()
+		call_deferred("proceed_to_next_stage")
 		
 		body.collect_rna()
 		if is_instance_valid(rna):
 			rna.queue_free()
+
+func proceed_to_next_stage() -> void:
+	create_stage()
+	enter_stage()
 
 func _on_player_lost_rna() -> void:
 	rna = rna_scene.instantiate()
