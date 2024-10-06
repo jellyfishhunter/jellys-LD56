@@ -26,7 +26,6 @@ script = ExtResource("1_06v0s")
 rna_scene = ExtResource("2_odetr")
 stage_scenes = [ExtResource("3_330xr"), ExtResource("4_32j7s"), ExtResource("4_he6ff"), ExtResource("6_2rdv5"), ExtResource("4_wu2j1"), ExtResource("6_bpt85"), ExtResource("5_pyx8t"), ExtResource("6_bqkjq"), ExtResource("11_0q34d")]
 boss_stage_scene = ExtResource("4_rj0lq")
-stages_count = 1
 
 [node name="StageHolder" type="Node2D" parent="."]
 
