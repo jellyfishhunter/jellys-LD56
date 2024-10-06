@@ -3,7 +3,7 @@ extends CharacterBody2D
 signal defeated
 
 @export var speed = 50
-var screen_size
+
 var player_node: Node2D
 var is_knocked_back = false
 
@@ -14,10 +14,8 @@ enum PlayerDetection {OUTOFREACH, INALERTAREA, INATTACKAREA}
 var player_detection := PlayerDetection.OUTOFREACH
 
 func _ready():
-	screen_size = get_viewport_rect().size
 	$AnimatedSprite2D.play("idle")
 
-# will be called from a global script
 func add_player(player: Node2D):
 	player_node = player
 
@@ -29,10 +27,11 @@ func _process(_delta):
 		# Move towards the player
 		var direction = (player_node.global_position - global_position).normalized()
 		velocity = direction * speed
+		print("direction: ", direction)
 
 		if direction.x > 0.5:
 			$AnimatedSprite2D.play("walk_right")
-		elif direction.x < 0.5:
+		elif direction.x < -0.5:
 			$AnimatedSprite2D.play("walk_left")
 		elif direction.y < 0:
 			$AnimatedSprite2D.play("walk_up")

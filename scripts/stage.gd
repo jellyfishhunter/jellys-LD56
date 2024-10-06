@@ -3,9 +3,10 @@ extends TileMapLayer
 signal all_enemies_defeated
 
 @export var influenza_scene: PackedScene
+@export var amoeba: StaticBody2D
+@export var is_boss_stage = false
 
 var enemy_count = 0
-var is_boss_stage = false
 var player: CharacterBody2D
 
 func _ready() -> void:
@@ -20,8 +21,13 @@ func _ready() -> void:
 		enemy.connect("defeated", _on_enemy_defeated)
 		call_deferred("add_child", enemy)
 
+	if is_boss_stage:
+		amoeba.add_player(player)
+		
 func open_gates() -> void:
 	$GateLayer.enabled = false
+	if is_boss_stage:
+		amoeba.start()
 
 func close_gates() -> void:
 	$GateLayer.enabled = true

@@ -1,0 +1,162 @@
+[gd_scene load_steps=22 format=3 uid="uid://ysqa1gjx0c07"]
+
+[ext_resource type="SpriteFrames" uid="uid://b5ci63nrxkcms" path="res://scenes/player.tres" id="1_0pr3k"]
+[ext_resource type="Texture2D" uid="uid://b4yapuxsmqs42" path="res://textures/amoeba/death_1.png" id="1_1clej"]
+[ext_resource type="Script" path="res://scripts/amoeba.gd" id="1_6moli"]
+[ext_resource type="PackedScene" uid="uid://dfmaqcujtu1c8" path="res://scenes/pseudopod.tscn" id="2_acwyu"]
+[ext_resource type="Texture2D" uid="uid://babalio4ovepj" path="res://textures/amoeba/death_2.png" id="2_pp5mb"]
+[ext_resource type="Texture2D" uid="uid://p7yq1vaxdvb" path="res://textures/amoeba/death_3.png" id="3_n8r7k"]
+[ext_resource type="Texture2D" uid="uid://kfiv8jgwmbm7" path="res://textures/amoeba/death_4.png" id="4_fcyyp"]
+[ext_resource type="Texture2D" uid="uid://dremr62uxyqjv" path="res://textures/amoeba/death_5.png" id="5_k541r"]
+[ext_resource type="Texture2D" uid="uid://c46df0s4f1c2u" path="res://textures/amoeba/death_6.png" id="6_v1v2g"]
+[ext_resource type="Texture2D" uid="uid://og8lukgh3xsr" path="res://textures/amoeba/death_7.png" id="7_afihn"]
+[ext_resource type="Texture2D" uid="uid://d1xc6586hb8iv" path="res://textures/amoeba/death_8.png" id="8_rgogh"]
+[ext_resource type="Texture2D" uid="uid://dfsbffmck5yl5" path="res://textures/amoeba/death_9.png" id="9_o4uhk"]
+[ext_resource type="Texture2D" uid="uid://u5jmm2gi4hky" path="res://textures/amoeba/down.png" id="10_c3unm"]
+[ext_resource type="Texture2D" uid="uid://c24vd8ysmfr7d" path="res://textures/amoeba/attack.png" id="11_wm65m"]
+[ext_resource type="Texture2D" uid="uid://btbcc23orptlj" path="res://textures/amoeba/hurt.png" id="12_0e3y1"]
+[ext_resource type="Texture2D" uid="uid://8ud7vt225n50" path="res://textures/amoeba/idle_1.png" id="13_gpum1"]
+[ext_resource type="Texture2D" uid="uid://cilqv6qnmsg5c" path="res://textures/amoeba/idle_2.png" id="14_olomc"]
+[ext_resource type="Texture2D" uid="uid://df4eajfn1bp6" path="res://textures/amoeba/left.png" id="15_c3xjd"]
+[ext_resource type="Texture2D" uid="uid://n2idyxr4frbn" path="res://textures/amoeba/right.png" id="16_vkipk"]
+[ext_resource type="Texture2D" uid="uid://c5axrn2cg5f0k" path="res://textures/amoeba/up.png" id="17_faalh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kfjfw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_wm65m")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1clej")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_pp5mb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_n8r7k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fcyyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_k541r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_v1v2g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_afihn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_rgogh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_o4uhk")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_c3unm")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_0e3y1")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_gpum1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_olomc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_c3xjd")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_vkipk")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_faalh")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[node name="Amoeba" type="StaticBody2D" groups=["Enemy"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_6moli")
+pseudopod_scene = ExtResource("2_acwyu")
+metadata/_edit_group_ = true
+
+[node name="Offspring" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Offspring"]
+position = Vector2(-11, 3)
+sprite_frames = ExtResource("1_0pr3k")
+animation = &"idle_default"
+autoplay = "idle_default"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="Offspring"]
+position = Vector2(-5, -2)
+sprite_frames = ExtResource("1_0pr3k")
+animation = &"idle_default"
+autoplay = "idle_default"
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="Offspring"]
+position = Vector2(0, 3)
+sprite_frames = ExtResource("1_0pr3k")
+animation = &"idle_default"
+autoplay = "idle_default"
+
+[node name="AnimatedSprite2D4" type="AnimatedSprite2D" parent="Offspring"]
+position = Vector2(5, -2)
+sprite_frames = ExtResource("1_0pr3k")
+animation = &"idle_default"
+autoplay = "idle_default"
+
+[node name="AnimatedSprite2D5" type="AnimatedSprite2D" parent="Offspring"]
+position = Vector2(11, 3)
+sprite_frames = ExtResource("1_0pr3k")
+animation = &"idle_default"
+autoplay = "idle_default"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_kfjfw")
+animation = &"death"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-15, 14, -11, 14, -9, 12, -7.32236, 12.1398, -5, 14, 5.07777, 14, 7, 12, 9, 12, 11.2719, 14, 15, 14, 18, 12, 18, 10, 15, 7, 18, 2, 18, -1, 17, -2, 14, -3, 11, -3, 9, -5, 12, -8, 17, -8, 18, -9, 18, -11, 15, -14, 8, -14, 4, -10, 2, -11, -2, -11, -4, -10, -8, -14, -15, -14, -18, -11, -18, -9, -17, -8, -12, -8, -9, -5, -11, -3, -14, -3, -17, -2, -18, -1, -18, 2, -15, 7, -18, 10, -18, 12)
