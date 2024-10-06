@@ -79,7 +79,8 @@ func _on_alert_area_body_exited(body: Node2D) -> void:
 func _on_attack_area_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		player_detection = PlayerDetection.INATTACKAREA
-		attack()
+		if state != State.ATTACK:
+			attack()
 
 func _on_attack_area_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
