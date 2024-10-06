@@ -57,7 +57,7 @@ func hit(spike: Node2D):
 
 	# knockback from source
 	var knockback = (global_position - spike.global_position).normalized() * 100
-	velocity += knockback
+	velocity = knockback
 	is_knocked_back = true
 	await get_tree().create_timer(0.5).timeout
 	is_knocked_back = false
