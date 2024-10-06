@@ -6,6 +6,10 @@ var environment: Node2D
 func _ready() -> void:
 	environment = environment_scene.instantiate()
 	add_child(environment)
+	if !$MainBGMPlayer.playing:
+		$MainBGMPlayer.play()
+	$StageBGMPlayer.stop()
+	$BossBGMPlayer.stop()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
@@ -30,17 +34,33 @@ func _on_environment_player_lost_rna() -> void:
 
 func _on_environment_player_defeated() -> void:
 	$HUD.show_game_over()
+	if !$MainBGMPlayer.playing:
+		$MainBGMPlayer.play()
+	$StageBGMPlayer.stop()
+	$BossBGMPlayer.stop()
 
 func _on_environment_player_won() -> void:
 	$HUD.show_game_won()
+	if !$MainBGMPlayer.playing:
+		$MainBGMPlayer.play()
+	$StageBGMPlayer.stop()
+	$BossBGMPlayer.stop()
 	await get_tree().create_timer(1.0).timeout
 	# TODO show credits?
 
 func _on_environment_new_stage(stage: int, is_boss_stage: bool) -> void:
 	if is_boss_stage:
 		$HUD.show_message("STAGE " + str(stage + 1) + "\nINFECT THEM")
+		$MainBGMPlayer.stop()
+		$StageBGMPlayer.stop()
+		if !$BossBGMPlayer.playing:
+			$BossBGMPlayer.play()
 	else:
 		$HUD.show_message("STAGE " + str(stage + 1) + "\nSLAY THEM ALL")
+		$MainBGMPlayer.stop()
+		if !$StageBGMPlayer.playing:
+			$StageBGMPlayer.play()
+		$BossBGMPlayer.stop()
 
 func take_screenshot():
 	var date = Time.get_date_string_from_system().replace(".", "_")

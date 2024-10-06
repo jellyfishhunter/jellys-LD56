@@ -52,6 +52,7 @@ func attack():
 	for spike in $SpikeHolder.get_children():
 		if spike.is_prepared:
 			spike.stab()
+	$AttackSFX.play()
 
 func hit(spike: Node2D):
 	if state == State.DEAD:
@@ -59,6 +60,7 @@ func hit(spike: Node2D):
 	state = State.DEAD
 	$AnimatedSprite2D.play("death")
 	$ParticleBurster.burst()
+	$HurtSFX.play()
 
 	# knockback from source
 	var knockback = (global_position - spike.global_position).normalized() * 100

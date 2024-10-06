@@ -54,10 +54,12 @@ func _on_entry_area_body_entered(body: Node2D) -> void:
 		$Player.is_entering_stage = false
 		call_deferred("set_entry_monitoring", false)
 		current_stage.close_gates()
+		$DoorSFX.play()
 
 func _on_stage_all_enemies_defeated() -> void:
 	if !is_boss_stage:
 		current_stage.open_gates()
+		$DoorSFX.play()
 		current_stage.block_rear()
 	else:
 		player_won.emit()

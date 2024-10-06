@@ -46,6 +46,7 @@ func _process(_delta):
 	if has_rna and Input.is_action_just_pressed("attack") and $SpikeHolder/PlayerSpike.is_prepared:
 		$SpikeHolder/PlayerSpike.stab()
 		is_attacking = true
+		$AttackSFX.play()
 
 	move_and_slide()
 	update_animation()
@@ -76,6 +77,8 @@ func hit(spike: Node2D):
 		defeated.emit()
 		$PinkParticleBurster.burst()
 	
+	$HurtSFX.play()
+
 	# knockback from source
 	var knockback = (global_position - spike.global_position).normalized() * 100
 	velocity = knockback
@@ -90,5 +93,7 @@ func lose_rna():
 		$RNAParticleBurster.burst()
 
 func collect_rna():
-	has_rna = true
-	gained_rna.emit()
+	if !has_rna:
+		has_rna = true
+		gained_rna.emit()
+		$RNASFX.play()

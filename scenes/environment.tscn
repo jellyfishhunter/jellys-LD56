@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://q787360p5qg8"]
+[gd_scene load_steps=17 format=3 uid="uid://q787360p5qg8"]
 
 [ext_resource type="Script" path="res://scripts/environment.gd" id="1_06v0s"]
 [ext_resource type="PackedScene" uid="uid://c7fvk1stv7dxb" path="res://scenes/player.tscn" id="1_y2l1j"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bvidgmdcfiyom" path="res://scenes/stages/stage_kill_corridor.tscn" id="6_bpt85"]
 [ext_resource type="PackedScene" uid="uid://boemgc7tah86h" path="res://scenes/stages/stage_pillars.tscn" id="6_bqkjq"]
 [ext_resource type="PackedScene" uid="uid://dbqbe364yisbj" path="res://scenes/stages/stage_rift.tscn" id="11_0q34d"]
+[ext_resource type="AudioStream" uid="uid://coci1lfqsuqp3" path="res://sfx/retro_ui_menu_error_09.wav" id="14_vc8gh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w64ww"]
 size = Vector2(100, 320)
@@ -47,6 +48,9 @@ shape = SubResource("RectangleShape2D_wsj7l")
 
 [node name="EntryPoint" type="Marker2D" parent="."]
 position = Vector2(-16, 160)
+
+[node name="DoorSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_vc8gh")
 
 [connection signal="defeated" from="Player" to="." method="_on_player_defeated"]
 [connection signal="lost_rna" from="Player" to="." method="_on_player_lost_rna"]

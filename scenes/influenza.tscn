@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c0nmu0b1l1r4f"]
+[gd_scene load_steps=21 format=3 uid="uid://c0nmu0b1l1r4f"]
 
 [ext_resource type="Script" path="res://scripts/influenza.gd" id="1_46684"]
 [ext_resource type="Texture2D" uid="uid://3bord6slwpse" path="res://textures/influenza/attack_1.png" id="1_f7qv4"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://cyc1iprwqwvye" path="res://textures/influenza/up.png" id="11_v3cuj"]
 [ext_resource type="PackedScene" uid="uid://wfg56wk4h2vt" path="res://scenes/influenza_spike.tscn" id="12_exo84"]
 [ext_resource type="PackedScene" uid="uid://dn312ohj645qm" path="res://scenes/particle_burster.tscn" id="14_ev1we"]
+[ext_resource type="AudioStream" uid="uid://bfslvuwtr5k0l" path="res://sfx/retro_impact_hit_15.wav" id="15_d3em6"]
+[ext_resource type="AudioStream" uid="uid://ckfyk7v6nc8t1" path="res://sfx/retro_move_walk_tick_01.wav" id="16_t1u3c"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2re0x"]
 animations = [{
@@ -155,6 +157,12 @@ shape = SubResource("CircleShape2D_qlhcn")
 
 [node name="ParticleBurster" parent="." instance=ExtResource("14_ev1we")]
 color = Color(0.0352941, 0.937255, 0.972549, 1)
+
+[node name="HurtSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_d3em6")
+
+[node name="AttackSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_t1u3c")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="AlertArea" to="." method="_on_alert_area_body_entered"]

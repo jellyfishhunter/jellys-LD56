@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7fvk1stv7dxb"]
+[gd_scene load_steps=9 format=3 uid="uid://c7fvk1stv7dxb"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_74e3b"]
 [ext_resource type="SpriteFrames" uid="uid://b5ci63nrxkcms" path="res://scenes/player.tres" id="2_5vhym"]
 [ext_resource type="PackedScene" uid="uid://dn312ohj645qm" path="res://scenes/particle_burster.tscn" id="4_vff1y"]
+[ext_resource type="AudioStream" uid="uid://d08sgogqlxnbd" path="res://sfx/retro_damage_hurt_ouch_30.wav" id="5_bxpw8"]
+[ext_resource type="AudioStream" uid="uid://c3jnjvux86nao" path="res://sfx/retro_powerup_collect_10.wav" id="6_ewasc"]
+[ext_resource type="AudioStream" uid="uid://ckfyk7v6nc8t1" path="res://sfx/retro_move_walk_tick_01.wav" id="7_kw0ry"]
 [ext_resource type="PackedScene" uid="uid://1d70i318ne6r" path="res://scenes/player_spike.tscn" id="16_gujdi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qkjyg"]
@@ -31,3 +34,12 @@ color = Color(0.941176, 0.941176, 0.027451, 1)
 
 [node name="PinkParticleBurster" parent="." instance=ExtResource("4_vff1y")]
 color = Color(0.964706, 0.0352941, 0.596078, 1)
+
+[node name="HurtSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_bxpw8")
+
+[node name="RNASFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ewasc")
+
+[node name="AttackSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_kw0ry")
