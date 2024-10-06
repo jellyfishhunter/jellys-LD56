@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bvidgmdcfiyom" path="res://scenes/stages/stage_kill_corridor.tscn" id="6_bpt85"]
 [ext_resource type="PackedScene" uid="uid://boemgc7tah86h" path="res://scenes/stages/stage_pillars.tscn" id="6_bqkjq"]
 [ext_resource type="PackedScene" uid="uid://dbqbe364yisbj" path="res://scenes/stages/stage_rift.tscn" id="11_0q34d"]
-[ext_resource type="AudioStream" uid="uid://coci1lfqsuqp3" path="res://sfx/retro_ui_menu_error_09.wav" id="14_vc8gh"]
+[ext_resource type="AudioStream" uid="uid://b0yoqng2m555w" path="res://sfx/retro_ui_menu_error_09.mp3" id="14_xdtn8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w64ww"]
 size = Vector2(100, 320)
@@ -26,6 +26,7 @@ script = ExtResource("1_06v0s")
 rna_scene = ExtResource("2_odetr")
 stage_scenes = [ExtResource("3_330xr"), ExtResource("4_32j7s"), ExtResource("4_he6ff"), ExtResource("6_2rdv5"), ExtResource("4_wu2j1"), ExtResource("6_bpt85"), ExtResource("5_pyx8t"), ExtResource("6_bqkjq"), ExtResource("11_0q34d")]
 boss_stage_scene = ExtResource("4_rj0lq")
+stages_count = 1
 
 [node name="StageHolder" type="Node2D" parent="."]
 
@@ -50,7 +51,7 @@ shape = SubResource("RectangleShape2D_wsj7l")
 position = Vector2(-16, 160)
 
 [node name="DoorSFX" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("14_vc8gh")
+stream = ExtResource("14_xdtn8")
 
 [connection signal="defeated" from="Player" to="." method="_on_player_defeated"]
 [connection signal="lost_rna" from="Player" to="." method="_on_player_lost_rna"]

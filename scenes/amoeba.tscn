@@ -21,9 +21,9 @@
 [ext_resource type="Texture2D" uid="uid://n2idyxr4frbn" path="res://textures/amoeba/right.png" id="16_vkipk"]
 [ext_resource type="Texture2D" uid="uid://c5axrn2cg5f0k" path="res://textures/amoeba/up.png" id="17_faalh"]
 [ext_resource type="PackedScene" uid="uid://dn312ohj645qm" path="res://scenes/particle_burster.tscn" id="21_4uw0v"]
-[ext_resource type="AudioStream" uid="uid://b36tc0463dstb" path="res://sfx/retro_footstep_movement_23.wav" id="22_ocmda"]
-[ext_resource type="AudioStream" uid="uid://bgv3qe6o5hk7" path="res://sfx/retro_spaceship_jet_boost_10.wav" id="23_yor40"]
-[ext_resource type="AudioStream" uid="uid://21eba6rmpurw" path="res://sfx/retro_spaceship_jet_boost_02.wav" id="24_wjx0h"]
+[ext_resource type="AudioStream" uid="uid://buqjijnlmptyc" path="res://sfx/retro_footstep_movement_23.mp3" id="22_fluvg"]
+[ext_resource type="AudioStream" uid="uid://bn78j1uqcdlei" path="res://sfx/retro_spaceship_jet_boost_10.mp3" id="23_clfio"]
+[ext_resource type="AudioStream" uid="uid://tohnijfwtj3n" path="res://sfx/retro_spaceship_jet_boost_02.mp3" id="24_8p02c"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kfjfw"]
 animations = [{
@@ -187,12 +187,12 @@ color = Color(0.964706, 0.0352941, 0.596078, 1)
 
 [node name="HurtSFX" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(10, 5)
-stream = ExtResource("22_ocmda")
+stream = ExtResource("22_fluvg")
 
 [node name="AttackSFX" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(10, 5)
-stream = ExtResource("23_yor40")
+stream = ExtResource("23_clfio")
 
 [node name="DeathSFX" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(10, 5)
-stream = ExtResource("24_wjx0h")
+stream = ExtResource("24_8p02c")
