@@ -61,22 +61,22 @@ position = Vector2(316, 266)
 position = Vector2(310, 250)
 
 [node name="Marker2D19" type="Marker2D" parent="EnemySpawnPositions"]
-position = Vector2(412, 46)
+position = Vector2(359, 96)
 
 [node name="Marker2D20" type="Marker2D" parent="EnemySpawnPositions"]
-position = Vector2(431, 46)
+position = Vector2(378, 96)
 
 [node name="Marker2D21" type="Marker2D" parent="EnemySpawnPositions"]
-position = Vector2(423, 61)
+position = Vector2(370, 111)
 
 [node name="Marker2D22" type="Marker2D" parent="EnemySpawnPositions"]
-position = Vector2(410, 267)
+position = Vector2(359, 249)
 
 [node name="Marker2D23" type="Marker2D" parent="EnemySpawnPositions"]
-position = Vector2(429, 267)
+position = Vector2(378, 249)
 
 [node name="Marker2D24" type="Marker2D" parent="EnemySpawnPositions"]
-position = Vector2(423, 251)
+position = Vector2(372, 233)
 
 [node name="Marker2D25" type="Marker2D" parent="EnemySpawnPositions"]
 position = Vector2(396, 147)
