@@ -27,7 +27,6 @@ func _process(_delta):
 		# Move towards the player
 		var direction = (player_node.global_position - global_position).normalized()
 		velocity = direction * speed
-		print("direction: ", direction)
 
 		if direction.x > 0.5:
 			$AnimatedSprite2D.play("walk_right")
