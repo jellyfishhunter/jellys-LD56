@@ -5,6 +5,7 @@ signal start_game
 func show_message(text):
 	$Message.text = text
 	$Message.show()
+	$Panel.show()
 	$MessageTimer.start()
 
 func show_game_over():
@@ -13,6 +14,7 @@ func show_game_over():
 
 	$Message.text = "MICROSLAYER"
 	$Message.show()
+	$Panel.show()
 	await get_tree().create_timer(1.0).timeout
 	$StartButton.show()
 
@@ -22,11 +24,13 @@ func show_game_won():
 
 	$Message.text = "MICROSLAYER"
 	$Message.show()
+	$Panel.show()
 	await get_tree().create_timer(1.0).timeout
 	$StartButton.show()
 
 func _on_message_timer_timeout():
 	$Message.hide()
+	$Panel.hide()
 
 func _on_start_button_pressed() -> void:
 	$StartButton.hide()

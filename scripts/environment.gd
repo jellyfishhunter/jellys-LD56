@@ -3,6 +3,7 @@ extends Node2D
 signal player_lost_rna
 signal player_defeated
 signal player_won
+signal new_stage
 
 @export var rna_scene: PackedScene
 @export var stage_scenes: Array = [PackedScene]
@@ -42,6 +43,7 @@ func enter_stage() -> void:
 	current_stage.open_gates()
 	$Player.position = $EntryPoint.position
 	$Player.is_entering_stage = true
+	new_stage.emit(played_stages, is_boss_stage)
 	call_deferred("set_entry_monitoring", true)
 
 func set_entry_monitoring(value: bool) -> void:
@@ -66,7 +68,7 @@ func _on_exit_area_body_entered(body: Node2D) -> void:
 		played_stages += 1
 		current_stage.queue_free()
 		call_deferred("proceed_to_next_stage")
-		
+
 		body.collect_rna()
 		if is_instance_valid(rna):
 			rna.queue_free()
