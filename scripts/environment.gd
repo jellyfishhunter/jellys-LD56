@@ -42,10 +42,15 @@ func enter_stage() -> void:
 	current_stage.open_gates()
 	$Player.position = $EntryPoint.position
 	$Player.is_entering_stage = true
+	call_deferred("set_entry_monitoring", true)
+
+func set_entry_monitoring(value: bool) -> void:
+	$EntryArea.monitoring = value
 
 func _on_entry_area_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		$Player.is_entering_stage = false
+		call_deferred("set_entry_monitoring", false)
 		current_stage.close_gates()
 
 func _on_stage_all_enemies_defeated() -> void:

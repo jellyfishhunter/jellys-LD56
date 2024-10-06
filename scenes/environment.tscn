@@ -22,12 +22,14 @@ boss_stage_scene = ExtResource("4_rj0lq")
 position = Vector2(-16, 160)
 
 [node name="ExitArea" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExitArea"]
 position = Vector2(530, 160)
 shape = SubResource("RectangleShape2D_w64ww")
 
 [node name="EntryArea" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EntryArea"]
 position = Vector2(66, 160)
