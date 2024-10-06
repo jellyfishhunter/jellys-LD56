@@ -116,3 +116,5 @@ position = Vector2(228, 141)
 
 [node name="Amoeba" parent="." instance=ExtResource("4_7xc8y")]
 position = Vector2(320, 160)
+
+[connection signal="defeated" from="Amoeba" to="." method="_on_amoeba_defeated"]

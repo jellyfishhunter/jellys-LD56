@@ -16,6 +16,7 @@ func _on_hud_start_game() -> void:
 
 	environment.connect("player_lost_rna", _on_environment_player_lost_rna)
 	environment.connect("player_defeated", _on_environment_player_defeated)
+	environment.connect("player_won", _on_environment_player_won)
 
 	$HUD.show_message("SLAY THEM ALL")
 
@@ -24,4 +25,8 @@ func _on_environment_player_lost_rna() -> void:
 
 func _on_environment_player_defeated() -> void:
 	$HUD.show_game_over()
+
+func _on_environment_player_won() -> void:
+	$HUD.show_game_won()
 	await get_tree().create_timer(1.0).timeout
+	# TODO show credits?

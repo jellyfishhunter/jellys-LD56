@@ -2,6 +2,7 @@ extends Node2D
 
 signal player_lost_rna
 signal player_defeated
+signal player_won
 
 @export var rna_scene: PackedScene
 @export var stage_scenes: Array = [PackedScene]
@@ -13,6 +14,7 @@ var current_stage: TileMapLayer
 var rna: Area2D
 var game_is_over = false
 var played_stages = 0
+var is_boss_stage = false
 
 func _ready() -> void:
 	create_stage()
@@ -25,6 +27,7 @@ func create_stage() -> void:
 	var stage: TileMapLayer
 	if (played_stages + 1) == stages_count:
 		stage = boss_stage_scene.instantiate()
+		is_boss_stage = true
 	else:
 		var stage_scene = stage_scenes[randi() % stage_scenes.size()]
 		stage = stage_scene.instantiate()
@@ -46,8 +49,12 @@ func _on_entry_area_body_entered(body: Node2D) -> void:
 		current_stage.close_gates()
 
 func _on_stage_all_enemies_defeated() -> void:
-	current_stage.open_gates()
-	current_stage.block_rear()
+	if !is_boss_stage:
+		current_stage.open_gates()
+		current_stage.block_rear()
+	else:
+		player_won.emit()
+		game_is_over = true
 
 func _on_exit_area_body_entered(body: Node2D) -> void:
 	if body.name == "Player":

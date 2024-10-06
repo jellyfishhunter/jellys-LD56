@@ -7,6 +7,7 @@ signal all_enemies_defeated
 @export var is_boss_stage = false
 
 var enemy_count = 0
+var boss_defeated = false
 var player: CharacterBody2D
 
 func _ready() -> void:
@@ -37,5 +38,13 @@ func block_rear() -> void:
 
 func _on_enemy_defeated() -> void:
 	enemy_count -= 1
-	if enemy_count == 0 and !is_boss_stage:
+	if enemy_count == 0:
+		if !is_boss_stage:
+			all_enemies_defeated.emit()
+		elif boss_defeated:
+			all_enemies_defeated.emit()
+
+func _on_amoeba_defeated() -> void:
+	boss_defeated = true
+	if enemy_count == 0:
 		all_enemies_defeated.emit()
