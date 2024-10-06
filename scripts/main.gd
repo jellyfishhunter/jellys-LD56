@@ -7,6 +7,11 @@ func _ready() -> void:
 	environment = environment_scene.instantiate()
 	add_child(environment)
 
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		if event.is_action_pressed("screenshot"):
+			take_screenshot()
+
 func _on_hud_start_game() -> void:
 	if environment.game_is_over:
 		environment.queue_free()
@@ -36,3 +41,10 @@ func _on_environment_new_stage(stage: int, is_boss_stage: bool) -> void:
 		$HUD.show_message("STAGE " + str(stage + 1) + "\nINFECT THEM")
 	else:
 		$HUD.show_message("STAGE " + str(stage + 1) + "\nSLAY THEM ALL")
+
+func take_screenshot():
+	var date = Time.get_date_string_from_system().replace(".", "_")
+	var time: String = Time.get_time_string_from_system().replace(":", "")
+	var screenshot_path = "res://" + "screenshot_" + date + "_" + time + ".jpg"
+	var image = get_viewport().get_texture().get_image()
+	image.save_jpg(screenshot_path)
