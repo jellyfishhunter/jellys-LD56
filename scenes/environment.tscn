@@ -1,10 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://q787360p5qg8"]
+[gd_scene load_steps=16 format=3 uid="uid://q787360p5qg8"]
 
 [ext_resource type="Script" path="res://scripts/environment.gd" id="1_06v0s"]
 [ext_resource type="PackedScene" uid="uid://c7fvk1stv7dxb" path="res://scenes/player.tscn" id="1_y2l1j"]
 [ext_resource type="PackedScene" uid="uid://dshghmwviwkoj" path="res://scenes/rna.tscn" id="2_odetr"]
-[ext_resource type="PackedScene" uid="uid://cd7mlmk805l7p" path="res://scenes/stages/base_stage.tscn" id="3_45uwi"]
+[ext_resource type="PackedScene" uid="uid://bds1dqtn8ghkg" path="res://scenes/stages/stage_barriers.tscn" id="3_330xr"]
+[ext_resource type="PackedScene" uid="uid://ckrqjkv8kn2bv" path="res://scenes/stages/stage_boxes.tscn" id="4_32j7s"]
+[ext_resource type="PackedScene" uid="uid://cd7mlmk805l7p" path="res://scenes/stages/stage_cave.tscn" id="4_he6ff"]
 [ext_resource type="PackedScene" uid="uid://c00kmefkerppw" path="res://scenes/stages/boss_stage.tscn" id="4_rj0lq"]
+[ext_resource type="PackedScene" uid="uid://cx5jynk20iqxc" path="res://scenes/stages/stage_hallway.tscn" id="4_wu2j1"]
+[ext_resource type="PackedScene" uid="uid://dd3clqy8q6614" path="res://scenes/stages/stage_open.tscn" id="5_pyx8t"]
+[ext_resource type="PackedScene" uid="uid://dy4b24nbfrubo" path="res://scenes/stages/stage_clearing.tscn" id="6_2rdv5"]
+[ext_resource type="PackedScene" uid="uid://bvidgmdcfiyom" path="res://scenes/stages/stage_kill_corridor.tscn" id="6_bpt85"]
+[ext_resource type="PackedScene" uid="uid://boemgc7tah86h" path="res://scenes/stages/stage_pillars.tscn" id="6_bqkjq"]
+[ext_resource type="PackedScene" uid="uid://dbqbe364yisbj" path="res://scenes/stages/stage_rift.tscn" id="11_0q34d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w64ww"]
 size = Vector2(100, 320)
@@ -15,7 +23,7 @@ size = Vector2(100, 320)
 [node name="Environment" type="Node2D"]
 script = ExtResource("1_06v0s")
 rna_scene = ExtResource("2_odetr")
-stage_scenes = [ExtResource("3_45uwi")]
+stage_scenes = [ExtResource("3_330xr"), ExtResource("4_32j7s"), ExtResource("4_he6ff"), ExtResource("6_2rdv5"), ExtResource("4_wu2j1"), ExtResource("6_bpt85"), ExtResource("5_pyx8t"), ExtResource("6_bqkjq"), ExtResource("11_0q34d")]
 boss_stage_scene = ExtResource("4_rj0lq")
 
 [node name="StageHolder" type="Node2D" parent="."]
