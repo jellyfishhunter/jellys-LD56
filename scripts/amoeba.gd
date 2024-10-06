@@ -56,7 +56,6 @@ func pseudopod_attack(direction: Vector2):
 		var pseudopod = pseudopod_scene.instantiate()
 		add_child(pseudopod)
 		pseudopod.global_position = global_position + direction * 16 * (i + 1)
-		print(pseudopod.global_position)
 		await get_tree().create_timer(.1).timeout
 
 func _process(_delta):

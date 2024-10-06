@@ -6,10 +6,13 @@ signal player_defeated
 @export var rna_scene: PackedScene
 @export var stage_scenes: Array = [PackedScene]
 @export var boss_stage_scene: PackedScene
+@export var stages_count = 5
+@export var starting_enemies = 8
 
 var current_stage: TileMapLayer
 var rna: Area2D
 var game_is_over = false
+var played_stages = 0
 
 func _ready() -> void:
 	create_stage()
@@ -19,10 +22,15 @@ func start_game() -> void:
 
 func create_stage() -> void:
 	# select random stage
-	var stage_scene = stage_scenes[randi() % stage_scenes.size()]
-	var stage = stage_scene.instantiate()
+	var stage: TileMapLayer
+	if (played_stages + 1) == stages_count:
+		stage = boss_stage_scene.instantiate()
+	else:
+		var stage_scene = stage_scenes[randi() % stage_scenes.size()]
+		stage = stage_scene.instantiate()
+
 	stage.player = $Player
-	stage.enemy_count = 5
+	stage.enemy_count = starting_enemies + (played_stages * 3)
 	add_child(stage)
 	current_stage = stage
 	current_stage.connect("all_enemies_defeated", _on_stage_all_enemies_defeated)
@@ -43,6 +51,7 @@ func _on_stage_all_enemies_defeated() -> void:
 
 func _on_exit_area_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
+		played_stages += 1
 		current_stage.queue_free()
 		create_stage()
 		enter_stage()
