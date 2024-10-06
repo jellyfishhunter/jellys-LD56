@@ -34,7 +34,7 @@ func create_stage() -> void:
 
 	stage.player = $Player
 	stage.enemy_count = starting_enemies + (played_stages * 3)
-	add_child(stage)
+	$StageHolder.add_child(stage)
 	current_stage = stage
 	current_stage.connect("all_enemies_defeated", _on_stage_all_enemies_defeated)
 

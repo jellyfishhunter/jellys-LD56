@@ -18,6 +18,8 @@ rna_scene = ExtResource("2_odetr")
 stage_scenes = [ExtResource("3_45uwi")]
 boss_stage_scene = ExtResource("4_rj0lq")
 
+[node name="StageHolder" type="Node2D" parent="."]
+
 [node name="Player" parent="." instance=ExtResource("1_y2l1j")]
 position = Vector2(-16, 160)
 
