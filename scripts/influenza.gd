@@ -15,6 +15,10 @@ var player_detection := PlayerDetection.OUTOFREACH
 
 func _ready():
 	$AnimatedSprite2D.play("idle")
+	# Disable monitoring while the game is loading
+	$AlertArea.monitoring = false
+	await get_tree().create_timer(1.0).timeout
+	$AlertArea.monitoring = true
 
 func add_player(player: Node2D):
 	player_node = player
