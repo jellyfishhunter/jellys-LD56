@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dn312ohj645qm"]
+
+[ext_resource type="Script" path="res://scripts/particle_burster.gd" id="1_tcmhm"]
+[ext_resource type="PackedScene" uid="uid://d23ky5dtaiftl" path="res://scenes/particle_burst.tscn" id="2_8f1vy"]
+
+[node name="ParticleBurster" type="Node2D"]
+script = ExtResource("1_tcmhm")
+particle_burst_scene = ExtResource("2_8f1vy")

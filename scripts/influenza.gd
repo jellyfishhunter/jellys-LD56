@@ -58,6 +58,7 @@ func hit(spike: Node2D):
 		return
 	state = State.DEAD
 	$AnimatedSprite2D.play("death")
+	$ParticleBurster.burst()
 
 	# knockback from source
 	var knockback = (global_position - spike.global_position).normalized() * 100

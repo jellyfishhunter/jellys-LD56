@@ -74,6 +74,7 @@ func hit(spike: Node2D):
 		is_defeated = true
 		$AnimatedSprite2D.play("death")
 		defeated.emit()
+		$PinkParticleBurster.burst()
 	
 	# knockback from source
 	var knockback = (global_position - spike.global_position).normalized() * 100
@@ -86,6 +87,7 @@ func lose_rna():
 	if has_rna:
 		has_rna = false
 		lost_rna.emit()
+		$RNAParticleBurster.burst()
 
 func collect_rna():
 	has_rna = true
